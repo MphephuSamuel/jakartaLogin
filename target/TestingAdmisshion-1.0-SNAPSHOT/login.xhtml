@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+    <h:head>
+        <title>Login</title>
+
+        <style>
+            /* General Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #f7f9fc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                color: #555;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 30px;
+            }
+
+            .login-form {
+                background: #ffffff;
+                width: 100%;
+                max-width: 450px;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                text-align: left;
+                font-size: 1.1em;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .form-header {
+                font-size: 1.5em;
+                font-weight: 600;
+                margin-bottom: 20px;
+                color: #4CAF50;
+                text-align: center;
+            }
+
+            .form-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 25px;
+            }
+
+            .input-field {
+                padding: 14px;
+                font-size: 1.1em;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                width: 100%;
+                margin-bottom: 20px;
+                transition: border-color 0.3s ease;
+            }
+
+            .input-field:focus {
+                border-color: #4CAF50;
+                outline: none;
+                box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+            }
+
+            .btn-login {
+                width: 100%;
+                padding: 14px;
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .btn-login:hover {
+                background-color: #45a049;
+            }
+
+            .error-message {
+                color: #f44336;
+                font-weight: 600;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .success-message {
+                color: #4CAF50;
+                font-weight: 600;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .signup-link {
+                display: block;
+                margin-top: 20px;
+                text-align: center;
+                font-size: 1em;
+                color: #007BFF;
+                text-decoration: none;
+                transition: text-decoration 0.3s ease;
+            }
+
+            .signup-link:hover {
+                text-decoration: underline;
+            }
+
+            /* Media Queries for Responsiveness */
+            @media (max-width: 480px) {
+                .login-form {
+                    padding: 20px;
+                    width: 90%;
+                }
+
+                h1 {
+                    font-size: 2em;
+                }
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <h1>Login</h1>
+
+        <h:form>
+            <div class="login-form">
+                <div class="form-header">Please enter your credentials:</div>
+
+                <h:panelGrid columns="1" cellpadding="5" styleClass="form-grid">
+                    <h:outputLabel for="username" value="Username:" />
+                    <h:inputText id="username" value="#{loginBean.username}" required="true" styleClass="input-field" />
+
+                    <h:outputLabel for="password" value="Password:" />
+                    <h:inputSecret id="password" value="#{loginBean.password}" required="true" styleClass="input-field" />
+
+                    <h:commandButton value="Login" action="#{loginBean.login}" styleClass="btn-login">
+                        <f:ajax execute="@form" render="@form" />
+                    </h:commandButton>
+                </h:panelGrid>
+
+                <!-- Display error messages if login fails -->
+                <h:messages globalOnly="true" styleClass="error-message" />
+
+                <!-- Error for wrong password -->
+                <h:outputText value="Invalid username or password. Please try again."
+                              rendered="#{loginBean.loginError}" styleClass="error-message" />
+
+                <!-- Success Message on Successful Login -->
+                <h:outputText value="Logged in successfully! Redirecting to your profile..."
+                              rendered="#{not empty loginBean.token}" styleClass="success-message" />
+
+                <!-- Link to Signup Page -->
+                <h:outputLink value="signup.xhtml" styleClass="signup-link">Don't have an account? Sign up here!</h:outputLink>
+            </div>
+        </h:form>
+    </h:body>
+</html>

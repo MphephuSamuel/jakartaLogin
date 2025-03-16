@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+        <title>Signup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Signup</h1>
+
+        <!-- Form for Signup -->
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="username" value="Username:" />
+                <h:inputText id="username" value="#{signupBean.username}" required="true" />
+
+                <h:outputLabel for="password" value="Password:" />
+                <h:inputSecret id="password" value="#{signupBean.password}" required="true" />
+
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" value="#{signupBean.email}" required="true" />
+
+                <h:commandButton value="Signup" action="#{signupBean.signup}" />
+            </h:panelGrid>
+        </h:form>
+        
+
+        <!-- Display error messages if signup fails -->
+        <h:messages globalOnly="true" styleClass="error" />
+    </h:body>
+</html>

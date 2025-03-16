@@ -1,0 +1,13 @@
+za\ump\scms\bict\testingadmisshion\api\AdminResource.class
+za\ump\scms\bict\testingadmisshion\models\Admin.class
+za\ump\scms\bict\testingadmisshion\JakartaRestConfiguration.class
+za\ump\scms\bict\testingadmisshion\models\Student.class
+za\ump\scms\bict\testingadmisshion\resources\JakartaEE10Resource.class
+za\ump\scms\bict\testingadmisshion\beans\ProfileBean.class
+za\ump\scms\bict\testingadmisshion\mocdatabases\AdminDatabase.class
+za\ump\scms\bict\testingadmisshion\models\Programme.class
+za\ump\scms\bict\testingadmisshion\services\AdminService.class
+za\ump\scms\bict\testingadmisshion\beans\LoginBean.class
+za\ump\scms\bict\testingadmisshion\beans\SignupBean.class
+za\ump\scms\bict\testingadmisshion\security\AuthenticationFilter.class
+za\ump\scms\bict\testingadmisshion\models\Applicant.class
