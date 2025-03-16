@@ -1,7 +1,14 @@
+# Use Payara (GlassFish) as the base image
+FROM payara/server-full:5.2021.5
 
-# Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-# Click nbfs://nbhost/SystemFileSystem/Templates/Other/Dockerfile to edit this template
+# Set the working directory inside the container
+WORKDIR /opt/payara/deployments
 
-FROM alpine:latest
+# Copy your WAR file into the container
+COPY ./target/TestingAdmisshion-1.0-SNAPSHOT.war /opt/payara/deployments/
 
-CMD ["/bin/sh"]
+# Expose the default port for Payara/GlassFish
+EXPOSE 8080
+
+# Start the Payara server
+CMD ["asadmin", "start-domain", "-v"]
